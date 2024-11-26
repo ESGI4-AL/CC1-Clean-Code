@@ -12,11 +12,19 @@ function dice_roll_analyse(dice_roll) {
         }
     }
 
-    const counts = Object.values(values).sort((a, b) => b - a);
+    const diceFrequencies  = Object.values(values).sort((a, b) => b - a);
+    const grandSuiteDiceValues = Object.keys(values).map(Number).sort((a, b) => a - b);
 
-    if (counts[0] === 5) return 50;
-    if (counts[0] === 4) return 35;
-    if (counts[0] === 3) return 28;
+    if (diceFrequencies[0] === 3 && diceFrequencies[1] === 2)
+        return 30;
+    if (diceFrequencies [0] === 5)
+        return 50;
+    if (diceFrequencies [0] === 4)
+        return 35;
+    if (diceFrequencies [0] === 3)
+        return 28;
+    if (grandSuiteDiceValues.length === 5 && grandSuiteDiceValues[4] - grandSuiteDiceValues[0] === 4)
+        return 40;
 
     return dice_roll.reduce((sum, value) => sum + value, 0);;
 }
