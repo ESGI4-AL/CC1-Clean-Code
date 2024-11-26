@@ -15,6 +15,7 @@ function dice_roll_analyse(dice_roll) {
     const counts = Object.values(values).sort((a, b) => b - a);
 
     if (counts[0] === 5) return 50;
+    if (counts[0] === 4) return 35;
 
     return dice_roll.reduce((sum, value) => sum + value, 0);;
 }
